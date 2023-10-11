@@ -6,6 +6,8 @@ const {
   getIncome,
   addExpense,
   getExpense,
+  addSavings,
+  getSavings,
 } = require("../controllers/finance.controller");
 
 router.post("/add-income", async (req, res) => {
@@ -60,6 +62,35 @@ router.get("/expense", async (req, res) => {
         .json({ message: "Fetching expense successful", data: expenseList });
     } else {
       res.status(404).json({ message: "Fetching expense failed" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error", error });
+  }
+});
+
+router.post("/add-savings", async (req, res) => {
+  const savingsDetails = req.body;
+  try {
+    const savedSavings = await addSavings(savingsDetails);
+    if (savedSavings) {
+      res.status(201).json({ message: "Savings added", data: savedSavings });
+    } else {
+      res.status(400).json({ message: "Savings adding failed" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Internal Server Error", error });
+  }
+});
+
+router.get("/savings", async (req, res) => {
+  try {
+    const savingsList = await getSavings();
+    if (savingsList) {
+      res
+        .status(200)
+        .json({ message: "Fetching savings successful", data: savingsList });
+    } else {
+      res.status(404).json({ message: "Fetching savings failed" });
     }
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error", error });

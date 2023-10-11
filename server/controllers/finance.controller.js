@@ -1,5 +1,6 @@
 const Expense = require("../models/expense.model");
 const Income = require("../models/income.model");
+const Savings = require("../models/savings.model");
 
 const { getDate } = require("../utils/date");
 
@@ -52,4 +53,35 @@ const getExpense = async () => {
   }
 };
 
-module.exports = { addIncome, getIncome, addExpense, getExpense };
+const addSavings = async (savingsDetails) => {
+  const savings = {
+    savings_type: savingsDetails.savingsType,
+    savings_amount: savingsDetails.savingsAmount,
+    savings_description: savingsDetails.savingsDescription,
+    savings_date: getDate(),
+  };
+  try {
+    const newSavings = new Savings(savings);
+    await newSavings.save();
+    return newSavings;
+  } catch (error) {
+    console.error("Error adding savings", error);
+  }
+};
+const getSavings = async () => {
+  try {
+    const savingsList = await Savings.find();
+    return savingsList;
+  } catch (error) {
+    console.error("Error getting savings list", error);
+  }
+};
+
+module.exports = {
+  addIncome,
+  getIncome,
+  addExpense,
+  getExpense,
+  addSavings,
+  getSavings,
+};
