@@ -1,12 +1,13 @@
 const Income = require("../models/income.model");
 
+const { getDate } = require("../utils/date");
+
 const addIncome = async (incomeDetails) => {
-  const { category, amount, date, description } = incomeDetails;
   const income = {
-    category,
-    amount,
-    date,
-    description,
+    income_type: incomeDetails.incomeType,
+    income_amount: incomeDetails.incomeAmount,
+    income_description: incomeDetails.incomeDescription,
+    income_date: getDate(),
   };
   try {
     const newIncome = new Income(income);

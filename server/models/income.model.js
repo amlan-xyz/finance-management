@@ -2,19 +2,19 @@ const mongoose = require("mongoose");
 
 const incomeSchema = new mongoose.Schema(
   {
-    category: {
+    income_type: {
       type: String,
       required: true,
     },
-    amount: {
+    income_amount: {
       type: Number,
       required: true,
     },
-    date: {
+    income_date: {
       type: String,
       required: true,
     },
-    description: {
+    income_description: {
       type: String,
     },
   },
