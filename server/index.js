@@ -2,8 +2,28 @@ require("dotenv").config();
 require("./db");
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
 app.use(express.json());
+
+//cors
+let allowedDomains = [
+  "https://finance-management-by-amlan.vercel.app",
+  "http://localhost:3000",
+];
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+
+      if (allowedDomains.indexOf(origin) === -1) {
+        var msg = `This site ${origin} does not have an access. Only specific domains are allowed to access it.`;
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+  })
+);
 
 //routes
 const financeRouter = require("./routes/finance.router");
