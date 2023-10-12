@@ -1,4 +1,4 @@
-const url = "https://finance-management.theweird0ne.repl.co";
+const url = "https://finance-management.theweird0ne.repl.co/finance";
 
 const fetchIncome = () => async (dispatch) => {
   try {

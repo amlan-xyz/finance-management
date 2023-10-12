@@ -27,6 +27,32 @@ export const financeReducer = (state = initialState, action) => {
         loading: false,
         error: "Error fetching income details",
       };
+    case "FETCH_SAVINGS_SUCCESS":
+      return {
+        ...state,
+        savings: action.payload,
+        loading: false,
+        error: null,
+      };
+    case "FETCH_SAVINGS_ERROR":
+      return {
+        ...state,
+        loading: false,
+        error: "Error fetching savings details",
+      };
+    case "FETCH_EXPENSE_SUCCESS":
+      return {
+        ...state,
+        expense: action.payload,
+        loading: false,
+        error: null,
+      };
+    case "FETCH_EXPENSE_ERROR":
+      return {
+        ...state,
+        loading: false,
+        error: "Error fetching expense details",
+      };
     case "ADD_DATA_LOADING":
       return {
         ...state,
@@ -37,6 +63,20 @@ export const financeReducer = (state = initialState, action) => {
       return {
         ...state,
         income: [...state.income, action.payload],
+        loading: false,
+        error: null,
+      };
+    case "ADD_EXPENSE_SUCCESS":
+      return {
+        ...state,
+        expense: [...state.expense, action.payload],
+        loading: false,
+        error: null,
+      };
+    case "ADD_SAVINGS_SUCCESS":
+      return {
+        ...state,
+        savings: [...state.savings, action.payload],
         loading: false,
         error: null,
       };

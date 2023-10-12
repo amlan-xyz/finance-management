@@ -6,15 +6,18 @@ export const EntryForm = () => {
   const dispatch = useDispatch();
   const [form, setForm] = useState({
     type: "",
+    category: "",
     amount: "",
     description: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(form);
     dispatch(addEntry(form));
     setForm({
       type: "",
+      category: "",
       amount: "",
       description: "",
     });
@@ -35,6 +38,38 @@ export const EntryForm = () => {
           <option value="expense">Expense</option>
           <option value="savings">Savings</option>
         </select>
+        <label htmlFor="category">Category</label>
+        <select
+          id="category"
+          onChange={(e) => setForm({ ...form, category: e.target.value })}
+          value={form.category}
+          required
+          disabled={form.type.length === 0 ? true : false}
+        >
+          <option value="">Select</option>
+          {form.type === "income" ? (
+            <>
+              <option value="salary">Salary</option>
+              <option value="business">Business</option>
+              <option value="freelancing">Freelancing</option>
+              <option value="others">Others</option>
+            </>
+          ) : form.type === "expense" ? (
+            <>
+              <option value="food">Food</option>
+              <option value="rent">Rent</option>
+              <option value="EMI">EMI</option>
+              <option value="others">Others</option>
+            </>
+          ) : (
+            <>
+              <option value="FD">FD</option>
+              <option value="stocks/mf">Stocks/MF</option>
+              <option value="others">Others</option>
+            </>
+          )}
+        </select>
+
         <label htmlFor="amount">Amount</label>
         <input
           type="number"

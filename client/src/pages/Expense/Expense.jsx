@@ -1,24 +1,22 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchIncome } from "../../actions/income.action";
-
-export const Income = () => {
+import { fetchExpense } from "../../actions/expense.action";
+export const Expense = () => {
   const dispatch = useDispatch();
-  const incomeList = useSelector((state) => state.income);
   const loading = useSelector((state) => state.loading);
+  const expenseList = useSelector((state) => state.expense);
 
   useEffect(() => {
-    dispatch(fetchIncome());
+    dispatch(fetchExpense());
   }, [dispatch]);
-
   return (
-    <section className="income">
-      <header className="section__header">Income Management</header>
+    <section className="expense">
+      <header className="section__header">Expense Details</header>
       {loading ? (
-        <p>Loading....</p>
+        <p>Loading...</p>
       ) : (
         <ul>
-          {incomeList.map((item) => {
+          {expenseList.map((item) => {
             const { _id, amount, category, description } = item;
             return (
               <li key={_id}>

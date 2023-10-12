@@ -1,9 +1,9 @@
-const url = "https://finance-management.theweird0ne.repl.co";
+const url = "https://finance-management.theweird0ne.repl.co/finance";
 
 const addEntry = (entry) => async (dispatch) => {
   try {
     dispatch({ type: "ADD_DATA_LOADING" });
-    const response = await fetch(`${url}/add-${entry.type}`, {
+    const response = await fetch(`${url}/add-finance`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
