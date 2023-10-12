@@ -6,7 +6,7 @@ const addFinance = async (financeDetails) => {
     finance_type: financeDetails.type,
     category: financeDetails.category,
     amount: financeDetails.amount,
-    description: financeDetails.incomeDescription,
+    description: financeDetails.description,
     date: getDate(),
   };
   try {
