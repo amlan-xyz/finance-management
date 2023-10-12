@@ -1,87 +1,33 @@
-const Expense = require("../models/expense.model");
-const Income = require("../models/income.model");
-const Savings = require("../models/savings.model");
-
+const Finance = require("../models/finance.model");
 const { getDate } = require("../utils/date");
 
-const addIncome = async (incomeDetails) => {
-  const income = {
-    income_type: incomeDetails.incomeType,
-    income_amount: incomeDetails.incomeAmount,
-    income_description: incomeDetails.incomeDescription,
-    income_date: getDate(),
+const addFinance = async (financeDetails) => {
+  const finance = {
+    finance_type: financeDetails.type,
+    category: financeDetails.category,
+    amount: financeDetails.amount,
+    description: financeDetails.incomeDescription,
+    date: getDate(),
   };
   try {
-    const newIncome = new Income(income);
-    await newIncome.save();
-    return newIncome;
+    const newFinance = new Finance(finance);
+    await newFinance.save();
+    return newFinance;
   } catch (error) {
-    console.error("Error adding income", error);
+    console.error(`Error adding ${finance.finance_type} details`, error);
   }
 };
 
-const getIncome = async () => {
+const getDetailsByType = async (type) => {
   try {
-    const incomeList = await Income.find();
-    return incomeList;
+    const financeDetails = await Finance.find({ finance_type: type });
+    return financeDetails;
   } catch (error) {
-    console.error("Error getting income list", error);
-  }
-};
-
-const addExpense = async (expenseDetails) => {
-  const expense = {
-    expense_type: expenseDetails.expenseType,
-    expense_amount: expenseDetails.expenseAmount,
-    expense_description: expenseDetails.expenseDescription,
-    expense_date: getDate(),
-  };
-  try {
-    const newExpense = new Expense(expense);
-    await newExpense.save();
-    return newExpense;
-  } catch (error) {
-    console.error("Error adding expense", error);
-  }
-};
-const getExpense = async () => {
-  try {
-    const expenseList = await Expense.find();
-    return expenseList;
-  } catch (error) {
-    console.error("Error getting expense list", error);
-  }
-};
-
-const addSavings = async (savingsDetails) => {
-  const savings = {
-    savings_type: savingsDetails.savingsType,
-    savings_amount: savingsDetails.savingsAmount,
-    savings_description: savingsDetails.savingsDescription,
-    savings_date: getDate(),
-  };
-  try {
-    const newSavings = new Savings(savings);
-    await newSavings.save();
-    return newSavings;
-  } catch (error) {
-    console.error("Error adding savings", error);
-  }
-};
-const getSavings = async () => {
-  try {
-    const savingsList = await Savings.find();
-    return savingsList;
-  } catch (error) {
-    console.error("Error getting savings list", error);
+    console.error(`Error getting ${type} details`, error);
   }
 };
 
 module.exports = {
-  addIncome,
-  getIncome,
-  addExpense,
-  getExpense,
-  addSavings,
-  getSavings,
+  addFinance,
+  getDetailsByType,
 };
