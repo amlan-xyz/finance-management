@@ -12,7 +12,7 @@ router.post("/add-finance", async (req, res) => {
     const newFinance = await addFinance(financeDetails);
     if (newFinance) {
       res.status(201).json({
-        message: `Successfully added ${newFinance.finance_typetype}`,
+        message: `Successfully added ${newFinance.finance_type}`,
         data: newFinance,
       });
     } else {
