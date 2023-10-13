@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchExpense } from "../../actions/expense.action";
+import { Loader } from "../../components/Loader/Loader";
 export const Expense = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.loading);
@@ -13,7 +14,7 @@ export const Expense = () => {
     <>
       <header className="header">Expense Details</header>
       {loading ? (
-        <p>Loading....</p>
+        <Loader />
       ) : (
         <table className="table">
           <thead>

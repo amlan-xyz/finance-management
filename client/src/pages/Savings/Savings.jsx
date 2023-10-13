@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSavings } from "../../actions/savings.action";
+import { Loader } from "../../components/Loader/Loader";
 export const Savings = () => {
   const dispatch = useDispatch();
   const savingsList = useSelector((state) => state.savings);
@@ -14,7 +15,7 @@ export const Savings = () => {
     <>
       <header className="header">Savings Details</header>
       {loading ? (
-        <p>Loading....</p>
+        <Loader />
       ) : (
         <table className="table">
           <thead>

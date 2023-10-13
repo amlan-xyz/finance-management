@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchIncome } from "../../actions/income.action";
+import { Loader } from "../../components/Loader/Loader";
 
 export const Income = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export const Income = () => {
     <>
       <header className="header">Income Details</header>
       {loading ? (
-        <p>Loading....</p>
+        <Loader />
       ) : (
         <table className="table">
           <thead>

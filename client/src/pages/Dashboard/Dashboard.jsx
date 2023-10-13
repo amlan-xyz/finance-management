@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchExpense } from "../../actions/expense.action";
 import { fetchIncome } from "../../actions/income.action";
 import { fetchSavings } from "../../actions/savings.action";
@@ -8,10 +8,14 @@ import { IncomeBreakdown } from "../../components/Charts/IncomeBreakdown";
 import { IncomeVsExpenseChart } from "../../components/Charts/IncomeVsExpense";
 import { SavingsBreakdown } from "../../components/Charts/SavingsBreakdown";
 import { EntryForm } from "../../components/Form/EntryFrom";
+import { Loader } from "../../components/Loader/Loader";
 import { Metrics } from "../../components/Metrics/Metrics";
 import "./Dashboard.css";
+
 export const Dashboard = () => {
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.loading);
+
   const [showChart, setShowChart] = useState("incomeVsExpense");
 
   const toggleChart = (value) => {
@@ -34,24 +38,30 @@ export const Dashboard = () => {
 
   return (
     <>
-      <header className="header">Dashboard</header>
-      <Metrics />
-      <EntryForm />
-      <div className="charts">
-        <div className="charts__toggle">
-          <label htmlFor="chart">Report :</label>
-          <select id="chart" onChange={(e) => toggleChart(e.target.value)}>
-            <option value="incomeVsExpense">Income Vs Expense</option>
-            <option value="income">Income Breakdown</option>
-            <option value="expense">Expense Breakdown</option>
-            <option value="savings">Savings Breakdown</option>
-          </select>
-        </div>
-        {showChart === "incomeVsExpense" && <IncomeVsExpenseChart />}
-        {showChart === "income" && <IncomeBreakdown />}
-        {showChart === "expense" && <ExpenseBreakdown />}
-        {showChart === "savings" && <SavingsBreakdown />}
-      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <header className="header">Dashboard</header>
+          <Metrics />
+          <EntryForm />
+          <div className="charts">
+            <div className="charts__toggle">
+              <label htmlFor="chart">Report :</label>
+              <select id="chart" onChange={(e) => toggleChart(e.target.value)}>
+                <option value="incomeVsExpense">Income Vs Expense</option>
+                <option value="income">Income Breakdown</option>
+                <option value="expense">Expense Breakdown</option>
+                <option value="savings">Savings Breakdown</option>
+              </select>
+            </div>
+            {showChart === "incomeVsExpense" && <IncomeVsExpenseChart />}
+            {showChart === "income" && <IncomeBreakdown />}
+            {showChart === "expense" && <ExpenseBreakdown />}
+            {showChart === "savings" && <SavingsBreakdown />}
+          </div>
+        </>
+      )}
     </>
   );
 };
