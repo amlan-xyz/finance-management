@@ -1,0 +1,72 @@
+.modal_wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 1;
+  background-color: rgba(189, 189, 189, 0.9);
+}
+
+.modal_container {
+  position: fixed;
+  min-width: 30rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--secondary-color);
+  padding: 2rem;
+  border-radius: 2rem;
+  z-index: 1;
+}
+
+.entry__form-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.entry__form-header h2 {
+  color: var(--primary-color);
+}
+
+.entry__form-header button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.entry__form {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.entry__form label {
+  font-size: 1.1rem;
+}
+
+.entry__form input,
+select,
+textarea {
+  background-color: var(--secondary-color);
+  padding: 0.5rem;
+  border: 1px solid;
+  outline: none;
+}
+
+.entry__form-submit-btn {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid;
+  outline: none;
+  background-color: var(--secondary-color);
+  box-shadow: var(--shadow);
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+
+.entry__form-header button,
+.entry__form-submit-btn:hover {
+  cursor: pointer;
+}

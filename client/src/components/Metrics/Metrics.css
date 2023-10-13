@@ -1,0 +1,32 @@
+.metrics {
+  margin: 2rem 0;
+}
+
+.metrics__body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.metrics__item {
+  height: 220px;
+  width: 230px;
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: var(--secondary-color);
+}
+
+.metrics__icon {
+  font-size: 2rem;
+}
+
+.metrics__value {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin: 0.8rem 0;
+}
+
+.metrics__tag {
+  color: var(--accent-color);
+  font-size: 1.5rem;
+}

@@ -1,0 +1,21 @@
+.charts {
+  margin-top: 2rem;
+  z-index: -1;
+}
+.charts__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+.charts__toggle label {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+.charts__toggle select {
+  margin-left: 1rem;
+  border: 1px solid;
+  outline: none;
+  box-shadow: var(--shadow);
+}

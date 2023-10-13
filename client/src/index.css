@@ -21,6 +21,15 @@ ul {
   list-style: none;
 }
 
+section {
+  margin-top: 1rem;
+}
+
+.section__header {
+  font-size: 1.7rem;
+  color: var(--primary-color);
+}
+
 .main {
   display: grid;
   grid-template-columns: 350px auto;
@@ -28,7 +37,6 @@ ul {
 }
 
 .main__body {
-  outline-style: solid;
   margin: 2rem;
 }
 
@@ -40,7 +48,28 @@ ul {
   fill: var(--accent-color);
 }
 
+.primary__btn {
+  width: max-content;
+  border: none;
+  background-color: var(--accent-color);
+  padding: 0.8rem 1rem;
+  box-shadow: var(--shadow);
+  font-size: 1rem;
+  color: var(--secondary-color);
+  border-radius: 1rem;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
