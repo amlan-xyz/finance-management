@@ -1,7 +1,7 @@
 
 # [Finance Management](https://finance-management-by-amlan.vercel.app/)
 
-## [Replit](https://finance-management.theweird0ne.repl.co) (Finance Management API)
+## [Replit](https://replit.com/@theweird0ne/Finance-Management) (Finance Management API)
 The Finance Management web application is a tool to help users track their finances, including income, expenses, savings, and more.
 
 ## Features
