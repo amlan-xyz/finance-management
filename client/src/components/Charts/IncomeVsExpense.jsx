@@ -16,6 +16,9 @@ export const IncomeVsExpenseChart = () => {
       fontColor: "#2483db",
       fontFamily: "poppins",
     },
+    axisY: {
+      minimum: 0,
+    },
     data: [
       {
         type: "column",
