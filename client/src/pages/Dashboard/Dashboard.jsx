@@ -33,8 +33,8 @@ export const Dashboard = () => {
   }, [dispatch]);
 
   return (
-    <section className="dashboard">
-      <header className="section__header">Dashboard</header>
+    <>
+      <header className="header">Dashboard</header>
       <Metrics />
       <EntryForm />
       <div className="charts">
@@ -52,6 +52,6 @@ export const Dashboard = () => {
         {showChart === "expense" && <ExpenseBreakdown />}
         {showChart === "savings" && <SavingsBreakdown />}
       </div>
-    </section>
+    </>
   );
 };

@@ -21,11 +21,8 @@ ul {
   list-style: none;
 }
 
-section {
+.header {
   margin-top: 1rem;
-}
-
-.section__header {
   font-size: 1.7rem;
   color: var(--primary-color);
 }
@@ -61,6 +58,34 @@ section {
 
 button:hover {
   cursor: pointer;
+}
+
+.table {
+  margin-top: 2rem;
+  box-shadow: var(--shadow);
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table__header {
+  background-color: var(--secondary-color);
+}
+
+.table__header-item {
+  height: 50px;
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+.table__item td {
+  text-align: center;
+  border: 1px solid var(--secondary-color);
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+.table tfoot td {
+  color: var(--primary-color);
 }
 
 code {

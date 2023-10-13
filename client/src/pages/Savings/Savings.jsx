@@ -11,22 +11,40 @@ export const Savings = () => {
   }, [dispatch]);
 
   return (
-    <section className="savings">
-      <header className="section__header">Savings Details</header>
+    <>
+      <header className="header">Savings Details</header>
       {loading ? (
-        <p>Loading..</p>
+        <p>Loading....</p>
       ) : (
-        <ul>
-          {savingsList.map((item) => {
-            const { _id, amount, category, description } = item;
-            return (
-              <li key={_id}>
-                {amount}||{category}||{description}
-              </li>
-            );
-          })}
-        </ul>
+        <table className="table">
+          <thead>
+            <tr className="table__header">
+              <th className="table__header-item">Date</th>
+              <th className="table__header-item">Category</th>
+              <th className="table__header-item">Description</th>
+              <th className="table__header-item">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {savingsList.map(({ _id, category, amount, date, description }) => (
+              <tr className="table__item" key={_id}>
+                <td>{date}</td>
+                <td>{category}</td>
+                <td>{!description ? "Description not given" : description}</td>
+                <td>{amount}</td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr className="table__item">
+              <td></td>
+              <td></td>
+              <td>Total</td>
+              <td>{savingsList.reduce((acc, curr) => acc + curr.amount, 0)}</td>
+            </tr>
+          </tfoot>
+        </table>
       )}
-    </section>
+    </>
   );
 };
