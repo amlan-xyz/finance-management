@@ -1,6 +1,7 @@
-import { AiOutlineBank, AiOutlineStock } from "react-icons/ai";
-import { ImFilesEmpty } from "react-icons/im";
+import { AiOutlineStock } from "react-icons/ai";
+import { GiWallet } from "react-icons/gi";
 import { MdOutlineDashboardCustomize, MdOutlineSavings } from "react-icons/md";
+import { RiBankCardLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
 export const Sidebar = () => {
@@ -20,12 +21,12 @@ export const Sidebar = () => {
             </span>
             <Link to="/" className="sidebar__link">
               {" "}
-              Dasboard
+              Dashboard
             </Link>
           </li>
           <li className="sidebar__item">
             <span className="sidebar__icon">
-              <AiOutlineBank className="fill_icon-accent" />
+              <GiWallet className="fill_icon-accent" />
             </span>
             <Link to="/income" className="sidebar__link">
               {" "}
@@ -34,7 +35,7 @@ export const Sidebar = () => {
           </li>
           <li className="sidebar__item">
             <span className="sidebar__icon">
-              <ImFilesEmpty className="fill_icon-accent" />
+              <RiBankCardLine className="fill_icon-accent" />
             </span>
             <Link to="/expense" className="sidebar__link">
               Expense
