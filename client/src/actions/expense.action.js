@@ -1,11 +1,15 @@
 const url = "https://finance-management.theweird0ne.repl.co/finance";
 
 const fetchExpense = () => async (dispatch) => {
+  dispatch({ type: "FETCH_DATA_LOADING" });
   try {
-    dispatch({ type: "FETCH_DATA_LOADING" });
     const response = await fetch(`${url}/expense`);
     const { data } = await response.json();
-    dispatch({ type: "FETCH_EXPENSE_SUCCESS", payload: data });
+    if (response.status === 200) {
+      dispatch({ type: "FETCH_EXPENSE_SUCCESS", payload: data });
+    } else {
+      throw new Error();
+    }
   } catch (error) {
     dispatch({ type: "FETCH_EXPENSE_ERROR" });
   }

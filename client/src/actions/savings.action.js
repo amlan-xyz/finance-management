@@ -5,7 +5,12 @@ const fetchSavings = () => async (dispatch) => {
     dispatch({ type: "FETCH_DATA_LOADING" });
     const response = await fetch(`${url}/savings`);
     const { data } = await response.json();
-    dispatch({ type: "FETCH_SAVINGS_SUCCESS", payload: data });
+
+    if (response.status === 200) {
+      dispatch({ type: "FETCH_SAVINGS_SUCCESS", payload: data });
+    } else {
+      throw new Error();
+    }
   } catch (error) {
     dispatch({ type: "FETCH_SAVINGS_ERROR" });
   }

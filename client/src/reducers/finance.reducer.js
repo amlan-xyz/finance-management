@@ -3,7 +3,7 @@ const initialState = {
   expense: [],
   savings: [],
   loading: false,
-  error: null,
+  error: "",
 };
 
 export const financeReducer = (state = initialState, action) => {
@@ -12,14 +12,14 @@ export const financeReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        error: null,
+        error: "",
       };
     case "FETCH_INCOME_SUCCESS":
       return {
         ...state,
         income: action.payload,
         loading: false,
-        error: null,
+        error: "",
       };
     case "FETCH_INCOME_ERROR":
       return {
@@ -32,7 +32,7 @@ export const financeReducer = (state = initialState, action) => {
         ...state,
         savings: action.payload,
         loading: false,
-        error: null,
+        error: "",
       };
     case "FETCH_SAVINGS_ERROR":
       return {
@@ -45,7 +45,7 @@ export const financeReducer = (state = initialState, action) => {
         ...state,
         expense: action.payload,
         loading: false,
-        error: null,
+        error: "",
       };
     case "FETCH_EXPENSE_ERROR":
       return {
@@ -57,28 +57,28 @@ export const financeReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        error: null,
+        error: "",
       };
     case "ADD_INCOME_SUCCESS":
       return {
         ...state,
         income: [...state.income, action.payload],
         loading: false,
-        error: null,
+        error: "",
       };
     case "ADD_EXPENSE_SUCCESS":
       return {
         ...state,
         expense: [...state.expense, action.payload],
         loading: false,
-        error: null,
+        error: "",
       };
     case "ADD_SAVINGS_SUCCESS":
       return {
         ...state,
         savings: [...state.savings, action.payload],
         loading: false,
-        error: null,
+        error: "",
       };
     case "ADD_DATA_ERROR":
       return {

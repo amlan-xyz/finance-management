@@ -11,12 +11,16 @@ const addEntry = (entry) => async (dispatch) => {
       body: JSON.stringify(entry),
     });
     const { data } = await response.json();
-    if (entry.type === "income") {
-      dispatch({ type: "ADD_INCOME_SUCCESS", payload: data });
-    } else if (entry.type === "expense") {
-      dispatch({ type: "ADD_EXPENSE_SUCCESS", payload: data });
+    if (response.status === 201) {
+      if (entry.type === "income") {
+        dispatch({ type: "ADD_INCOME_SUCCESS", payload: data });
+      } else if (entry.type === "expense") {
+        dispatch({ type: "ADD_EXPENSE_SUCCESS", payload: data });
+      } else {
+        dispatch({ type: "ADD_SAVINGS_SUCCESS", payload: data });
+      }
     } else {
-      dispatch({ type: "ADD_SAVINGS_SUCCESS", payload: data });
+      throw new Error();
     }
   } catch (error) {
     dispatch({ type: "ADD_DATA_ERROR" });

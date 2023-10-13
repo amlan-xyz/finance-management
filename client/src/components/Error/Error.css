@@ -1,0 +1,22 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.error__container {
+  height: 400px;
+  width: 600px;
+  box-shadow: var(--shadow);
+  background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.error__container h1 {
+  margin-bottom: 2rem;
+}
