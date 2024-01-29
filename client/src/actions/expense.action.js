@@ -1,4 +1,4 @@
-const url = "https://finance-management.theweird0ne.repl.co/finance";
+const url = "https://finance-management-api-lc7r.onrender.com/finance";
 
 const fetchExpense = () => async (dispatch) => {
   dispatch({ type: "FETCH_DATA_LOADING" });
